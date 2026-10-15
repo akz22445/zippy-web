@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zippy | GTA Cartage, Warehousing & Distribution</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fa;--surf:#fff;--ink:#0b1730;--mut:#586278;--line:#dfe3ec;--navy:#0b1730;--acc:#ff5a1f;--gold:#ffc83d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070d1b;--surf:#101a30;--ink:#f1f4fb;--mut:#9ba6bf;--line:#1f2b46}}
+:root[data-theme="dark"]{--bg:#070d1b;--surf:#101a30;--ink:#f1f4fb;--mut:#9ba6bf;--line:#1f2b46}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif;margin:0;letter-spacing:-.02em;line-height:1.02}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.util{background:var(--navy);color:#cfd7ea;font-size:13px}.util .wrap{display:flex;justify-content:space-between;gap:12px;height:36px;align-items:center}
+.util a{text-decoration:none;margin-left:20px;font-weight:600}.util a:hover{color:var(--gold)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--surf);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font:800 28px "Bricolage Grotesque",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:16px;height:16px;background:var(--acc);border-radius:4px;transform:skewX(-18deg)}
+nav a{margin-left:26px;text-decoration:none;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}nav a:hover{color:var(--acc)}
+.btn{display:inline-block;background:var(--acc);color:#fff!important;padding:14px 28px;border-radius:10px;font:600 15px Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px var(--acc)}
+.btn.out{background:transparent;border:2px solid #fff}nav .btn{padding:10px 20px;margin-left:26px;color:#fff}
+/* hero slider */
+.hero{position:relative;height:min(86vh,720px);min-height:560px;background:var(--navy);color:#fff;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;display:flex;align-items:center}
+.slide.on{opacity:1}.slide:nth-child(1){background:linear-gradient(120deg,#0b1730,#17306b 60%,#24459a)}
+.slide:nth-child(2){background:linear-gradient(120deg,#1b1030,#4a1d6b 60%,#a02c5d)}
+.slide:nth-child(3){background:linear-gradient(120deg,#07252b,#0b5a63 60%,#16a085)}
+.slide:nth-child(4){background:linear-gradient(120deg,#2a1204,#7a2f0a 60%,#ff5a1f)}
+.kick{color:var(--gold);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:13px;margin-bottom:16px;display:block}
+.slide h1{font-size:clamp(40px,7vw,92px);font-weight:800;max-width:14ch;transform:translateY(30px);transition:transform 1s .2s}
+.slide.on h1{transform:none}.slide p{max-width:520px;font-size:19px;opacity:.85;margin:22px 0 30px}
+.skyline{position:absolute;left:0;right:0;bottom:0;height:170px;opacity:.22}
+.dots{position:absolute;left:0;right:0;bottom:26px;display:flex;justify-content:center;gap:10px;z-index:3}
+.dots button{width:44px;height:5px;border:0;border-radius:3px;background:#ffffff55;cursor:pointer;padding:0}.dots button.on{background:var(--gold)}
+.road{position:absolute;left:0;right:0;bottom:0;height:46px;background:#05080f;z-index:2}
+.road:before{content:"";position:absolute;left:0;right:0;top:21px;border-top:4px dashed #ffffff44;animation:dash 0.8s linear infinite}
+@keyframes dash{to{transform:translateX(-32px)}}
+.truck{position:absolute;bottom:34px;left:-320px;width:250px;z-index:2;animation:drive 12s linear infinite}@keyframes drive{to{left:105%}}
+@media (prefers-reduced-motion:reduce){.truck,.road:before{animation:none}.truck{left:70%}}
+/* tiles */
+section{padding:92px 0}.h2{font-size:clamp(32px,4.6vw,56px);font-weight:800;margin-bottom:14px}.sub{color:var(--mut);max-width:620px;margin:0 0 44px}
+.eyebrow{color:var(--acc);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;display:block;margin-bottom:12px}
+.tiles{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.tile{position:relative;background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:34px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.tile:hover{transform:translateY(-8px);box-shadow:0 26px 50px -24px #0b173066}
+.tile:after{content:"";position:absolute;left:0;bottom:0;height:5px;width:0;background:var(--acc);transition:width .4s}.tile:hover:after{width:100%}
+.ico{width:64px;height:64px;border-radius:16px;background:var(--navy);display:grid;place-items:center;margin-bottom:22px}
+.ico svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{font-size:25px;margin-bottom:10px}.tile p{color:var(--mut);margin:0 0 16px;font-size:16px}.tile a{color:var(--acc);font-weight:600;text-decoration:none}
+/* serve */
+.serve{background:var(--navy);color:#fff}.serve .sub{color:#aab6d3}
+.chips{display:flex;flex-wrap:wrap;gap:12px}.chips span{border:1px solid #ffffff33;border-radius:999px;padding:12px 22px;font-weight:500;transition:.25s}.chips span:hover{background:var(--gold);color:#0b1730;border-color:var(--gold)}
+.marq{overflow:hidden;margin-top:44px;border-block:1px solid #ffffff22;padding:22px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 30s linear infinite;font:800 clamp(28px,4vw,48px) "Bricolage Grotesque",sans-serif;color:#ffffff22}.marq b{color:var(--acc);margin:0 18px}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* why */
+.why{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.why div{border-left:4px solid var(--acc);padding:6px 0 6px 22px}.why h3{font-size:24px;margin-bottom:8px}.why p{margin:0;color:var(--mut)}
+.partner{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:56px}
+@media(max-width:860px){.partner{grid-template-columns:1fr;padding:32px 24px}nav a:not(.btn){display:none}}
+.big{font:800 clamp(44px,7vw,88px)/.95 "Bricolage Grotesque",sans-serif}.big em{font-style:normal;color:var(--acc)}
+footer{background:#05080f;color:#9aa5c0;padding:56px 0 30px;font-size:15px}
+footer .wrap{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}footer h4{color:#fff;margin:0 0 12px;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+footer a{display:block;text-decoration:none;margin:6px 0}footer a:hover{color:var(--gold)}
+.copy{grid-column:1/-1;border-top:1px solid #ffffff1a;padding-top:20px;font-size:13px}
+/* modal */
+.modal{position:fixed;inset:0;background:#050a16cc;backdrop-filter:blur(6px);z-index:50;display:none;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}
+.box{background:var(--surf);color:var(--ink);width:min(640px,100%);max-height:92vh;overflow:auto;border-radius:22px;padding:34px;position:relative;animation:pop .35s}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.x{position:absolute;right:16px;top:12px;border:0;background:none;font-size:30px;color:var(--mut);cursor:pointer}
+.tabs{display:flex;gap:8px;margin:18px 0}.tabs button{flex:1;padding:12px;border-radius:10px;border:2px solid var(--line);background:none;color:var(--ink);font:600 14px Inter;cursor:pointer;letter-spacing:.05em;text-transform:uppercase}.tabs button.on{border-color:var(--acc);background:var(--acc);color:#fff}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f{grid-column:1/-1}
+form h4{grid-column:1/-1;margin:10px 0 0;font-size:12px;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
+input,select,textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);border-color:transparent}
+.seg{display:flex;gap:8px}.seg label{flex:1;text-align:center;padding:11px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-size:14px;font-weight:500}.seg input{display:none}.seg label:has(input:checked){background:var(--navy);color:#fff;border-color:var(--navy)}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+html{-webkit-text-size-adjust:100%}img,svg{max-width:100%}
+.tiles{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}.why{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.hero{height:min(86dvh,720px)}.slide .wrap{padding-bottom:70px}input,select,textarea{font-size:16px}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--ink);font-size:22px;width:44px;height:44px;border-radius:10px;cursor:pointer}
+@media(max-width:1024px){.wrap{padding:0 28px}.partner{padding:44px 36px}.slide h1{max-width:16ch}}
+@media(max-width:860px){.burger{display:block}header nav{position:absolute;left:0;right:0;top:100%;background:var(--surf);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 28px 22px;display:none}header nav.open{display:flex}header nav.open a{display:block!important;margin:0;padding:14px 0;border-bottom:1px solid var(--line)}header nav.open .btn{margin-top:16px;text-align:center;border:0}}
+@media(max-width:640px){.wrap{padding:0 18px}section{padding:64px 0}.util .wrap{justify-content:flex-end}.util .wrap>span:first-child{display:none}.util a:first-child{margin-left:0}.hero{min-height:600px}.slide p{font-size:17px}.truck{width:170px;bottom:36px}.tile,.partner{padding:26px 22px}.h2{margin-bottom:12px}.chips span{padding:10px 16px;font-size:15px}form{grid-template-columns:1fr}.box{padding:26px 18px;border-radius:18px}.btn{padding:14px 22px}.dots button{width:30px}footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
+@media(max-width:360px){.slide h1{font-size:36px}footer .wrap{grid-template-columns:1fr}}
+</style></head><body>
+<div class="util"><div class="wrap"><span>Your partner in time.</span><span><a href="mailto:hello@gozippy.ca">hello@gozippy.ca</a><a href="#" onclick="return false" title="Link your customer portal here">Customer Login</a></span></div></div>
+<header><div class="wrap nav"><a class="logo" href="#top"><i></i>Zippy</a>
+<button class="burger" id="bg" aria-label="Menu" aria-expanded="false">☰</button><nav id="nv"><a href="#services">Services</a><a href="#serve">Who we serve</a><a href="#why">Who we are</a><a href="#careers">Careers</a><a class="btn" href="#" data-q>Request a quote</a></nav></div></header>
+
+<main id="top">
+<div class="hero" id="hero">
+<div class="slide on"><div class="wrap"><span class="kick">GTA Local Cartage</span><h1>Overnight. Same day. Dedicated.</h1><p>Local delivery that bends to your schedule, with the precision to land every load on time and on point.</p><a class="btn" href="#" data-q>Get a quote</a></div></div>
+<div class="slide"><div class="wrap"><span class="kick">Warehousing &amp; Distribution</span><h1>Warehousing built around you.</h1><p>Customized storage and distribution management that moves as fast as your business does.</p><a class="btn" href="#" data-q>Get a quote</a></div></div>
+<div class="slide"><div class="wrap"><span class="kick">Truckload &amp; 3PL</span><h1>Reach across North America.</h1><p>Truckload and third-party logistics, with collaborative planning from first mile to last.</p><a class="btn" href="#" data-q>Get a quote</a></div></div>
+<div class="slide"><div class="wrap"><span class="kick">Simple Solutions. Forward Thinking.</span><h1>Go Zippy.</h1><p>More than outsourcing your fleet. A partner that drives your success forward.</p><a class="btn out" href="#services">Explore services</a></div></div>
+<svg class="skyline" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 170V110h60V80h50v50h40V60h60v70h50V90h70v40h40V50h40v80h60V100h80v30h50V70h40V10h8v60h40v60h60V90h60v40h60V60h50v70h70V100h60v70z"/></svg>
+<svg class="truck" viewBox="0 0 260 100" aria-hidden="true"><rect x="4" y="8" width="170" height="64" rx="6" fill="#ff5a1f"/><path d="M180 28h42l26 24v20h-68z" fill="#ffc83d"/><rect x="198" y="36" width="24" height="18" rx="2" fill="#0b1730" opacity=".8"/><text x="89" y="51" text-anchor="middle" textLength="140" lengthAdjust="spacingAndGlyphs" fill="#fff" font-size="34" font-weight="800" font-style="italic" font-family="'Bricolage Grotesque',Inter,Arial,sans-serif">ZIPPY</text><g fill="#05080f"><circle cx="50" cy="76" r="14"/><circle cx="130" cy="76" r="14"/><circle cx="214" cy="76" r="14"/></g></svg>
+<div class="road"></div><div class="dots" id="dots"></div></div>
+
+<section id="services"><div class="wrap"><span class="eyebrow">Our services</span><h2 class="h2 rv">Three ways to move forward.</h2><p class="sub rv">Pick a service or combine them. Every plan is tailored to your freight.</p>
+<div class="tiles">
+<div class="tile rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 16V6h11v10M14 9h4l3 3v4h-3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div><h3>GTA Local Cartage</h3><p>Overnight, same-day and dedicated delivery across the Greater Toronto Area.</p><a href="#" data-q>Get a quote →</a></div>
+<div class="tile rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v10H3zM8 20v-6h8v6"/></svg></div><h3>Warehousing &amp; Distribution</h3><p>Flexible storage and distribution management tailored to how you ship.</p><a href="#" data-q>Get a quote →</a></div>
+<div class="tile rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Third Party Logistics</h3><p>Truckload and 3PL coverage across North America, coordinated by one team.</p><a href="#" data-q>Get a quote →</a></div>
+</div><p class="sub" style="font-size:13px;margin:22px 0 0">Services are a suggested layout. Confirm the final list with the Zippy team.</p></div></section>
+
+<section class="serve" id="serve"><div class="wrap"><span class="eyebrow">Who we serve</span><h2 class="h2 rv">One partner for many industries.</h2><p class="sub rv">From manufacturers to retailers, Zippy adapts to the way your sector ships.</p>
+<div class="chips rv"><span>Retail</span><span>Manufacturing</span><span>Packaging</span><span>Construction</span><span>Food &amp; Beverage</span><span>Industrial</span><span>E-commerce</span><span>Distribution</span></div>
+<div class="marq" aria-hidden="true"><div>DYNAMIC<b>●</b>CUSTOMER-CENTRIC<b>●</b>COLLABORATIVE<b>●</b>ON TIME<b>●</b>ON POINT<b>●</b>DYNAMIC<b>●</b>CUSTOMER-CENTRIC<b>●</b>COLLABORATIVE<b>●</b>ON TIME<b>●</b>ON POINT<b>●</b></div></div></div></section>
+
+<section id="why"><div class="wrap"><span class="eyebrow">Who we are</span><h2 class="h2 rv">Ignite progress. Accelerate success.</h2><p class="sub rv"></p>
+<div class="why rv"><div><h3>Dynamic Delivery</h3><p>Changing schedules and unpredictable roads don't slow us down. We find a way.</p></div><div><h3>Customer-Centric</h3><p>Personalized service, transparent communication and unwavering support.</p></div><div><h3>Collaborative Logistics</h3><p>Open communication and real partnership shape every solution.</p></div></div></div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="partner rv"><div class="big">Your partner <em>in time.</em></div><div><p style="font-size:19px;margin:0 0 24px">Serving the GTA and beyond. Tell us what you're moving and we'll build the plan together.</p><a class="btn" href="#" data-q>Request a quote</a></div></div></div></section>
+
+<section id="careers" style="padding-top:0"><div class="wrap"><div class="partner rv" style="background:var(--gold);color:#0b1730;border:0"><div class="big" style="font-size:clamp(36px,5vw,64px)">Drive with Zippy.</div><div><p style="font-size:18px;margin:0 0 22px">Join a team that values collaboration and forward thinking.</p><a class="btn" style="background:#0b1730" href="mailto:hello@gozippy.ca?subject=Join%20Our%20Team">Join our team</a></div></div></div></section>
+</main>
+
+<footer><div class="wrap"><div><a class="logo" style="color:#fff" href="#top"><i></i>Zippy</a><p>Simple solutions. Forward thinking.</p></div>
+<div><h4>Services</h4><a href="#services">GTA Local Cartage</a><a href="#services">Warehousing &amp; Distribution</a><a href="#services">Third Party Logistics</a></div>
+<div><h4>Company</h4><a href="#why">Who we are</a><a href="#serve">Who we serve</a><a href="#careers">Careers</a></div>
+<div><h4>Contact</h4><a href="mailto:hello@gozippy.ca">hello@gozippy.ca</a><a href="#" data-q>Request a quote</a></div>
+<div class="copy">© 2026 GoZippy. All rights reserved.</div></div></footer>
+
+<div class="modal" id="m" role="dialog" aria-modal="true"><div class="box"><button class="x" aria-label="Close" id="cl">×</button>
+<h2 style="font-size:32px">Request a quote</h2>
+<div class="tabs"><button class="on" data-t="Transport">Transport</button><button data-t="Warehousing">Warehousing</button></div>
+<form id="qf"><h4>Contact</h4><input name="name" placeholder="Name" required><input name="company" placeholder="Company"><input class="f" type="email" name="email" placeholder="Email" required>
+<div class="f tw" style="display:contents"><h4>Origin</h4><input name="ofrom" placeholder="City / postal code"><input name="odate" type="date" aria-label="Pickup date"><h4>Destination</h4><input class="f" name="dest" placeholder="City / postal code">
+<h4>Product</h4><input name="pieces" type="number" min="1" placeholder="Pallets / pieces"><input name="wt" type="number" min="0" placeholder="Weight">
+<div class="seg"><label><input type="radio" name="u" value="kg" checked>Kg</label><label><input type="radio" name="u" value="lbs">Lbs</label></div>
+<div class="seg"><label><input type="radio" name="s" value="Stackable" checked>Stackable</label><label><input type="radio" name="s" value="Non-stackable">Non-stackable</label></div></div>
+<textarea class="f" name="msg" rows="3" placeholder="Description or special requirements"></textarea>
+<button class="btn f" type="submit">Send request</button></form></div></div>
+
+<script>
+var $=function(s){return document.querySelector(s)},m=$('#m'),tab='Transport';
+var nv=$('#nv'),bg=$('#bg');bg.onclick=function(){var o=nv.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+nv.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nv.classList.remove('open');bg.textContent='☰';bg.setAttribute('aria-expanded',false)})});
+document.querySelectorAll('[data-q]').forEach(function(a){a.onclick=function(e){e.preventDefault();m.classList.add('open')}});
+$('#cl').onclick=function(){m.classList.remove('open')};m.onclick=function(e){if(e.target===m)m.classList.remove('open')};
+document.onkeydown=function(e){if(e.key==='Escape')m.classList.remove('open')};
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');tab=b.dataset.t}});
+$('#qf').onsubmit=function(e){e.preventDefault();var d=new FormData(e.target),b=['Type: '+tab];d.forEach(function(v,k){if(v)b.push(k+': '+v)});
+location.href='mailto:hello@gozippy.ca?subject='+encodeURIComponent(tab+' quote request from '+d.get('name'))+'&body='+encodeURIComponent(b.join('\n'))};
+var sl=document.querySelectorAll('.slide'),dt=$('#dots'),i=0,t;
+sl.forEach(function(_,n){var b=document.createElement('button');b.setAttribute('aria-label','Slide '+(n+1));b.onclick=function(){go(n)};dt.appendChild(b)});
+function go(n){i=n;sl.forEach(function(s,k){s.classList.toggle('on',k===n);dt.children[k].classList.toggle('on',k===n)});clearInterval(t);t=setInterval(function(){go((i+1)%sl.length)},6000)}go(0);
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script></body></html>
